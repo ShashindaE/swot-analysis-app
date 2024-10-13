@@ -35,7 +35,7 @@ export default function HeroSection() {
                 <Link
                     href="https://github.com/michaelshimeles/nextjs14-starter-template"
                     target='_blank'
-                    className='animate-buttonheartbeat border p-2 rounded-full mt-5 hover:dark:bg-black hover:cursor-pointer'
+                    className='animate-buttonheartbeat border p-4 rounded-full mt-5 hover:dark:bg-black hover:cursor-pointer'
                     aria-label="View NextJS 14 Starter Template on GitHub"
                 >
                     <Github className='w-5 h-5' aria-hidden="true" />

@@ -71,3 +71,16 @@ model invoices {
   email           String
   user_id         String?
 }
+
+model SWOT {
+  id          Int      @id @default(autoincrement())
+  userId      String
+  strengths   String[]
+  weaknesses  String[]
+  opportunities String[]
+  threats     String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([userId])
+}

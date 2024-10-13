@@ -1,0 +1,162 @@
+
+High-Level Guide: Replacing OpenAI API with Azure OpenAI
+
+1. Update Configuration
+Replace OpenAI API configuration with Azure OpenAI configuration:
+
+```typescript
+// Before (OpenAI API configuration)
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+// After (Azure OpenAI configuration)
+const configuration = new Configuration({
+  basePath: process.env.AZURE_OPENAI_ENDPOINT, // e.g., "https://YOUR_RESOURCE_NAME.openai.azure.com/"
+});
+```
+
+Notes:
+- Remove `apiKey` from the configuration when using Azure OpenAI.
+- Set `basePath` to your Azure OpenAI endpoint URL.
+
+2. Adjust API Requests
+Modify your API request to include Azure-specific headers and parameters:
+
+```typescript
+// Replace this (OpenAI API request)
+const completion = await openai.createChatCompletion({
+  model: "gpt-3.5-turbo",
+  messages: [...],
+});
+
+// With this (Azure OpenAI API request)
+const completion = await openai.createChatCompletion(
+  {
+    model: process.env.AZURE_OPENAI_DEPLOYMENT_NAME, // Your Azure deployment name
+    messages: [...],
+    // Include other parameters as needed
+  },
+  {
+    headers: {
+      "api-key": process.env.AZURE_OPENAI_API_KEY,
+    },
+    params: {
+      "api-version": process.env.AZURE_OPENAI_API_VERSION || "2023-03-15-preview",
+    },
+  }
+);
+```
+
+Notes:
+- Set `model` to your Azure deployment name.
+- Add headers:
+  - Include `"api-key"` with your Azure OpenAI API key.
+- Add parameters:
+  - Include `"api-version"` to specify the API version.
+
+3. Update Environment Variables
+Set the following environment variables:
+
+```
+AZURE_OPENAI_ENDPOINT=https://YOUR_RESOURCE_NAME.openai.azure.com/
+AZURE_OPENAI_API_KEY=your-azure-openai-api-key
+AZURE_OPENAI_DEPLOYMENT_NAME=your-deployment-name
+AZURE_OPENAI_API_VERSION=2023-03-15-preview
+```
+
+Remove: `OPENAI_API_KEY` (since you're switching to Azure OpenAI).
+
+4. Replace Model Names with Deployment Names
+Use your Azure deployment name instead of the model name:
+
+```typescript
+// From (OpenAI model name)
+model: "gpt-3.5-turbo",
+
+// To (Azure deployment name)
+model: process.env.AZURE_OPENAI_DEPLOYMENT_NAME,
+```
+
+5. Ensure Authentication via Headers
+Azure OpenAI requires the API key to be sent in the request headers:
+
+```typescript
+headers: {
+  "api-key": process.env.AZURE_OPENAI_API_KEY,
+},
+```
+
+6. Example of the Updated Function
+Here's the modified function integrating Azure OpenAI:
+
+```typescript
+import { Configuration, OpenAIApi } from "openai";
+
+const simpleOpenAIRequest = async (payload: IChatGPTPayload) => {
+  const configuration = new Configuration({
+    basePath: process.env.AZURE_OPENAI_ENDPOINT,
+  });
+
+  const openai = new OpenAIApi(configuration);
+
+  const completion = await openai.createChatCompletion(
+    {
+      model: process.env.AZURE_OPENAI_DEPLOYMENT_NAME,
+      temperature: 1,
+      messages: [
+        {
+          role: "system",
+          content: mapStyle(payload.converSationStyle),
+        },
+        {
+          role: "user",
+          content: payload.prompt,
+        },
+      ],
+    },
+    {
+      headers: {
+        "api-key": process.env.AZURE_OPENAI_API_KEY,
+      },
+      params: {
+        "api-version": process.env.AZURE_OPENAI_API_VERSION || "2023-03-15-preview",
+      },
+    }
+  );
+
+  return completion.data.choices[0].message?.content;
+};
+```
+
+7. Update Your Main Entry Point
+Ensure your main function uses the updated request function:
+
+```typescript
+export async function POST(request: Request) {
+  const body = (await request.json()) as IChatGPTPayload;
+  const response = await simpleOpenAIRequest(body);
+  return new Response(response);
+}
+```
+
+8. Remove OpenAI-Specific Code
+Delete or comment out any code that references OpenAI-specific configurations or variables not used by Azure OpenAI.
+
+Summary
+- Updated the configuration to use Azure OpenAI's endpoint.
+- Modified API requests to include necessary headers and parameters for Azure.
+- Replaced model names with your Azure deployment names.
+- Adjusted environment variables to store Azure-specific settings.
+- Ensured authentication is handled via headers as required by Azure OpenAI.
+
+Final Notes
+- **Testing**: After making these changes, test your application thoroughly to ensure it works with Azure OpenAI.
+- **Documentation**: Refer to Azure's official documentation for any specific details or updates.
+- **Security**: Keep your API keys secure and do not commit them to version control.
+
+
+Use these Credentials also
+
+AZURE_OPEN_AI_KEY =508939457b09440f9d214be6958a8039
+AZURE_OPEN_AI_BASE = 'https://Brandalyze.openai.azure.com/openai/deployments/gpt-4o'

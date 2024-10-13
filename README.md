@@ -85,3 +85,4 @@ Refer to the documentation of the individual technologies used in this project f
 - [Prisma Documentation](https://www.prisma.io/docs)
 - [Clerk Documentation](https://clerk.dev/docs) (if using auth)
 - [Stripe Documentation](https://stripe.com/docs) (if using payments)
+"# swot-analysis-app" 
