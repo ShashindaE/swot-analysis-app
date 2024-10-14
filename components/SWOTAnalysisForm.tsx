@@ -60,13 +60,37 @@ export default function SWOTAnalysisForm() {
   }
 
   function formatAnalysis(text: string) {
-    return text.split('\n').map((line, index) => (
-      <p key={index} className="mb-2">
-        {line.split('**').map((part, i) => (
-          i % 2 === 1 ? <strong key={i}>{part}</strong> : part
-        ))}
-      </p>
-    ));
+    const sections = text.split('---');
+    const [strengths, weaknesses, opportunities, threats, actionPlan] = sections;
+
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-4 border rounded-lg">
+          <h4 className="font-semibold mb-2">Strengths</h4>
+          <p>{strengths}</p>
+        </div>
+        <div className="p-4 border rounded-lg">
+          <h4 className="font-semibold mb-2">Weaknesses</h4>
+          <p>{weaknesses}</p>
+        </div>
+        <div className="p-4 border rounded-lg">
+          <h4 className="font-semibold mb-2">Opportunities</h4>
+          <p>{opportunities}</p>
+        </div>
+        <div className="p-4 border rounded-lg">
+          <h4 className="font-semibold mb-2">Threats</h4>
+          <p>{threats}</p>
+        </div>
+        <div className="mt-4 p-4 border rounded-lg col-span-full">
+          <h4 className="font-semibold mb-2">Action Plan</h4>
+          <p>{actionPlan}</p>
+        </div>
+        <div className="mt-4 p-4 border rounded-lg col-span-full bg-gray-100">
+          <h4 className="font-semibold mb-2">Full AI Response (For Testing)</h4>
+          <p>{text}</p>
+        </div>
+      </div>
+    );
   }
 
   return (

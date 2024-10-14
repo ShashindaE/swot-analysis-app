@@ -21,7 +21,7 @@ export async function POST(req: Request) {
       messages: [
         {
           role: "system",
-          content: "You are a business analyst expert. Provide a concise SWOT (Strengths, Weaknesses, Opportunities, Threats) analysis based on the given information."
+          content: "You are a business analyst expert. Provide a concise SWOT (Strengths, Weaknesses, Opportunities, Threats) analysis based on the given information. Use '---' to separate each section without including headers or additional text. Don't use Headers like 'Strengths', 'Weaknesses', 'Opportunities', 'Threats', etc."
         },
         {
           role: "user",
