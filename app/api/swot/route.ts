@@ -28,6 +28,7 @@ Industry: ${industry}
 Current Challenges: ${challenges}
 Goals and Vision: ${vision}
 
+Be strict to follow the following rule:
 Provide the response in the following format:
 Strengths:
 ---
@@ -39,6 +40,7 @@ Threats:
 ---
 Action Plan:
 ---
+The following rule is important and be strictly followed: Do not add Strengths:, Weaknesses:, Opportunities:, Threats:, or Action Plan: headers at the beginning of each section. add '/' after the each line. Number each line.
 `;
 
     const completion = await openai.chat.completions.create({
