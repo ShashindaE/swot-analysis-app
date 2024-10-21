@@ -73,14 +73,27 @@ model invoices {
 }
 
 model SWOT {
-  id          Int      @id @default(autoincrement())
-  userId      String
-  strengths   String[]
-  weaknesses  String[]
-  opportunities String[]
-  threats     String[]
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id                           Int      @id @default(autoincrement())
+  userId                       String
+  brandName                    String
+  brandLaunchStatus            String
+  productsAndServices          String?
+  uniqueSellingProposition     String?
+  currentMarketPosition        String?
+  geographicalMarketsServed    String?
+  customerBase                 String?
+  plannedProductsAndServices   String?
+  plannedUniqueSellingProposition String?
+  intendedMarketPosition       String?
+  geographicalMarketsTargeted  String?
+  targetCustomerBase           String?
+  strengths                    String[]
+  weaknesses                   String[]
+  opportunities                 String[]
+  threats                      String[]
+  actionPlan                   String[]
+  createdAt                    DateTime @default(now())
+  updatedAt                    DateTime @updatedAt
 
   @@index([userId])
 }

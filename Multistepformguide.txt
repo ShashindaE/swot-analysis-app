@@ -1,0 +1,253 @@
+Purpose: To create a user-friendly, multi-step form that collects necessary data for an AI-powered SWOT analysis while minimizing user effort.
+
+Method: Start with essential profiling questions to understand the brand's context. Use conditional logic to dynamically adjust subsequent questions based on previous answers, ensuring relevance and brevity.
+
+Form Structure
+Step 1: Essential Profiling
+Brand Name:
+
+Question: What is your brand or company name?
+Input Type: Text field
+Brand Launch Status:
+
+Question: Has your brand been launched yet?
+Options:
+Yes
+No
+Input Type: Radio buttons
+Industry/Sector:
+
+Question: Which industry best describes your brand?
+Options:
+Technology
+Retail
+Healthcare
+Food & Beverage
+Others (with an option to specify)
+Input Type: Dropdown list with "Other" option
+Company Size:
+
+Question: How many employees does your company have?
+Options:
+1-10
+11-50
+51-200
+201-500
+501+
+Input Type: Dropdown list
+Market Scope:
+
+Question: Where does your brand operate or plan to operate?
+Options:
+Local
+Regional
+National
+International (specify regions)
+Input Type: Dropdown list with conditional text field for "International"
+Business Model:
+
+Question: What is your primary business model?
+Options:
+B2B (Business to Business)
+B2C (Business to Consumer)
+D2C (Direct to Consumer)
+Other (please specify)
+Input Type: Dropdown list with "Other" option
+Main Goal/Objectives:
+
+Question: What is your brand's main goal at the moment?
+Options:
+Launching the brand
+Increasing sales
+Expanding into new markets
+Enhancing brand awareness
+Developing new products/services
+Other (please specify)
+Input Type: Dropdown list with "Other" option
+Step 2: Dynamic Questions Based on Profiling
+Using responses from Step 1, present only the questions relevant to the user's context.
+
+For All Brands:
+Products/Services Overview:
+
+Question: Please provide a brief description of your products or services and what makes them unique.
+Input Type: Text area
+Target Customers:
+
+Question: Who are your primary (or intended) customers? (Demographics, interests, needs)
+Input Type: Text area
+Conditional Questions Based on Brand Launch Status:
+If Brand is Not Launched:
+
+Launch Challenges:
+
+Question: What challenges are you facing in launching your brand?
+Options (Checkboxes):
+Market research
+Funding
+Product development
+Regulatory compliance
+Building a customer base
+Other (please specify)
+Input Type: Checkboxes with "Other" option
+Go-to-Market Strategy:
+
+Question: How do you plan to introduce your brand to the market?
+Options:
+Social media campaigns
+Influencer partnerships
+Traditional advertising
+Pre-launch events
+Other (please specify)
+Input Type: Dropdown list with "Other" option
+If Brand is Already Launched:
+
+Market Position:
+
+Question: How would you describe your brand's current position in the market?
+Options:
+Market leader
+Major competitor
+Niche player
+Emerging brand
+Input Type: Dropdown list
+Competition:
+
+Question: Who are your main competitors?
+Input Type: Text area
+Competitive Advantage:
+
+Question: What sets your brand apart from competitors?
+Input Type: Text area
+Current Challenges:
+
+Question: What are the main challenges your brand is currently facing?
+Options (Checkboxes):
+Market saturation
+Changing consumer preferences
+Supply chain issues
+Technological advancements
+Increased competition
+Regulatory changes
+Other (please specify)
+Input Type: Checkboxes with "Other" option
+Conditional Questions Based on Industry:
+For Regulated Industries (e.g., Healthcare, Finance):
+
+Regulatory Environment:
+
+Question: Are there specific regulations or compliance issues impacting your brand?
+Input Type: Yes/No Radio buttons
+If Yes: Please briefly describe them.
+Input Type: Text area
+For Technology Companies:
+
+Technological Innovation:
+
+Question: How do emerging technologies affect your brand?
+Input Type: Text area
+For Retail/Food & Beverage:
+
+Customer Experience:
+
+Question: How do you engage with customers to enhance their experience?
+Input Type: Text area
+Conditional Questions Based on Company Size:
+For Small Companies (1-10 employees):
+
+Resource Needs:
+
+Question: What resources would most help your brand grow?
+Options (Checkboxes):
+Funding
+Skilled personnel
+Technology
+Partnerships
+Other (please specify)
+Input Type: Checkboxes with "Other" option
+For Large Companies (201+ employees):
+
+Organizational Challenges:
+
+Question: What internal challenges affect your brand's performance?
+Options:
+Communication across departments
+Change management
+Innovation adoption
+Employee engagement
+Other (please specify)
+Input Type: Dropdown list with "Other" option
+Conditional Questions Based on Business Model:
+For B2B Brands:
+
+Sales Cycle:
+
+Question: How long is your typical sales cycle?
+Options:
+Less than 1 month
+1-3 months
+4-6 months
+More than 6 months
+Input Type: Dropdown list
+Client Acquisition:
+
+Question: What strategies do you use to acquire new clients?
+Input Type: Text area
+For B2C/D2C Brands:
+
+Marketing Channels:
+
+Question: Which marketing channels are most effective for your brand?
+Options (Checkboxes):
+Social media advertising
+Email marketing
+Content marketing
+Influencer partnerships
+Traditional media
+Other (please specify)
+Input Type: Checkboxes with "Other" option
+Customer Retention:
+
+Question: How do you encourage repeat business from your customers?
+Input Type: Text area
+Conditional Questions Based on Main Goal/Objectives:
+If Expanding into New Markets:
+
+Market Research:
+
+Question: Have you conducted market research for the new markets?
+Options:
+Yes
+No
+Input Type: Radio buttons
+Entry Strategy:
+
+Question: What is your strategy for entering these markets?
+Input Type: Text area
+If Developing New Products/Services:
+
+Innovation Process:
+
+Question: How do you approach product/service development?
+Input Type: Text area
+Customer Feedback:
+
+Question: Do you involve customers in the development process?
+Options:
+Yes
+No
+Input Type: Radio buttons
+Step 3: Identifying Opportunities and Threats
+Market Trends:
+
+Question: What current trends in your industry could impact your brand positively or negatively?
+Input Type: Text area
+External Factors:
+
+Question: Are there any external factors (economic, social, technological, environmental, legal) that could significantly affect your brand?
+Input Type: Text area
+Step 4: Summary and Additional Comments
+Final Thoughts:
+
+Question: Is there anything else you'd like us to know about your brand or its challenges and opportunities? (Optional)
+Input Type: Text area
